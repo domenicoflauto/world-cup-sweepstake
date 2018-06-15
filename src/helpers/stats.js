@@ -117,5 +117,12 @@ function getGoals(match, side) {
   return match[`${side}_team_events`]
     .filter(e => e.type_of_event ==='goal')
     // TODO change time into an int...
-    .map(g => [match[`${side}_team`].code, g.time]);
+    .map(g => [match[`${side}_team`].code, convertToMins(g.time)]);
+}
+
+const convertToMins = (goalTimeString) => {
+  const mins = goalTimeString.split("'")
+    .map(t => t.replace('+', ''))
+    .filter(t => t !== "");
+  return mins.reduce((a, b) => parseInt(a) + parseInt(b), 0);
 }
