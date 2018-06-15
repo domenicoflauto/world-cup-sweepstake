@@ -14,7 +14,7 @@ class TeamCard extends React.Component {
       'away': away
     });
 
-    let team = TEAMS[id];
+    let team = TEAMS[id] || {};
 
     return (
       <div className={ classes }>

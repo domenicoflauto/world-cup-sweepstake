@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function getBiggestLosses(matches) {
   const worstGoalDiffs = matches
     .filter(m => m.status === 'completed')
@@ -29,4 +31,69 @@ function teamsReducer(col, team) {
     col[team.code] = {diff: team.diff, score: team.score};
   }
   return col;
+}
+
+function startedMatches(matches) {
+  return matches.filter(match => match.time !== null);
+}
+
+export function rankDirtiestTeams(matches) {
+  const cardData = startedMatches(matches).reduce((col, match) => {
+    let teams = [{
+      id: match.home_team.code ,
+      yellow: match.home_team_events.filter(e => e.type_of_event === 'yellow-card').length,
+      red: match.home_team_events.filter(e => e.type_of_event === 'red-card').length
+    },
+    {
+      id: match.away_team.code,
+      yellow: match.away_team_events.filter(e => e.type_of_event === 'yellow-card').length,
+      red: match.away_team_events.filter(e => e.type_of_event === 'red-card').length
+    }];
+
+    teams.forEach(team => {
+      let existingTeam = col.find(t => t[0] === team.id);
+      if (existingTeam) {
+        let { yellow, red, score } = existingTeam;
+        col = [
+          ...col.filter(t => t.id !== team.id),
+          [
+            team.id,
+            {
+              yellow: yellow + team.yellow,
+              red: red + team.red,
+              score: score + (team.red * 2) + team.yellow
+            }
+          ]
+        ]
+      }
+      else {
+        col = [
+          ...col,
+          [
+            team.id,
+            {
+              yellow: team.yellow,
+              red: team.red,
+              score: (team.red * 2) + team.yellow
+            }
+          ]
+        ]
+      }
+    });
+    return col;
+  }, []);
+
+  let sorted = cardData.sort((a, b) => b[1].score - a[1].score);
+  return sorted.map(a => {
+    return [
+      a[0],
+      (
+        <ul className='dirtiest-scores'>
+          <li>{ `red: ${a[1].red}` }</li>
+          <li>{ `yellow: ${a[1].yellow}` }</li>
+          <li>{ `score: ${(a[1].red * 2) + a[1].yellow}` }</li>
+        </ul>
+      )
+    ];
+  });
 }
