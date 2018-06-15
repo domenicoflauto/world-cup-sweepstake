@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Header from './components/header';
 import Leaderboards from './views/leaderboards';
 import Teams from './views/teams';
-import * as stats from './helpers/stats';
 
 import './App.css';
 

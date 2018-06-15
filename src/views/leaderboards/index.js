@@ -17,6 +17,14 @@ class Leaderboards extends React.Component {
             name='Biggest Hammering'
             standings={stats.getBiggestLosses(this.props.matches)}
           />
+          <LeaderBoard
+            name='Dirtiest Teams'
+            standings={stats.rankDirtiestTeams(this.props.matches)}
+         />
+          <LeaderBoard
+            name='Fastest goal'
+            standings={stats.getFastestGoals(this.props.matches)}
+          />
 
           <Dirtiest />
           <Dirtiest />
