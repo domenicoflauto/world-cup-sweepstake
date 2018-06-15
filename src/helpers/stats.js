@@ -1,18 +1,25 @@
 export function getBiggestLosses(matches) {
-  const goalDiffs = matches
+  const worstGoalDiffs = matches
     .filter(m => m.status === 'completed')
     .map(getLosingGoalDiff)
-    .sort()
-    .reverse()
-    .map(m => m.split('_')[1]);
-  return goalDiffs.slice(0, 4);
+    .reduce(teamsReducer, {});
+
+  return Object.keys(worstGoalDiffs)
+    .sort((a, b) => worstGoalDiffs[a] < worstGoalDiffs[b]);
 }
 
 function getLosingGoalDiff({ home_team, away_team }) {
   const homeDiff = home_team.goals - away_team.goals;
   // always return a positive diff ie goals the team lost by
   if (homeDiff < 0) {
-    return `${-homeDiff}_${home_team.code}`
+    return {code: home_team.code, diff: -homeDiff};
   }
-  return `${homeDiff}_${away_team.code}`
+  return {code: away_team.code, diff: homeDiff};
+}
+
+function teamsReducer(col, team) {
+  if ((!(team.code in col)) || (col[team.code] < team.diff)) {
+    col[team.code] = team.diff;
+  }
+  return col;
 }
