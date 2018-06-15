@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  height: 100px;
+  height: 40px;
   width: 200px;
 }
 
@@ -17,7 +17,7 @@
 
 .team-card .flag {
   border-radius: 50px;
-  width: 100px;
+  width: 60px;
 }
 
 .team-card .flag img {
