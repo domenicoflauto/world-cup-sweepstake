@@ -8,7 +8,7 @@ import './teamCard.css';
 class TeamCard extends React.Component {
 
   render() {
-    let { id, away } = this.props;
+    let { id, away, score } = this.props;
     let classes = classNames({
       'team-card': true,
       'away': away
@@ -21,6 +21,9 @@ class TeamCard extends React.Component {
         <div className='user'>{ team.user }</div>
         <div className='flag'>
           <img src={ team.flag } alt={ team.name } />
+        </div>
+        <div>
+          {score}
         </div>
       </div>
     );
