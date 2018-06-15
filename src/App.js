@@ -18,13 +18,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getData();
+    fetch('http://worldcup.sfg.io/matches', {method: 'GET'})
+      .then(resp => resp.json())
+      .then(json => this.setState({matches: json}));
   }
 
   renderView() {
     switch(this.state.view) {
     case 'leaderboards':
-      return <Leaderboards />;
+      return <Leaderboards matches={this.state.matches} />;
     case 'teams':
       return <Teams />;
     }
@@ -37,15 +39,8 @@ class App extends Component {
         <div className='view'>
           { this.renderView() }
         </div>
-        BIGGEST LOSS - {this.state.data.length && this.getBiggestLoss()}
       </div>
     );
-  }
-
-  getData() {
-    fetch('http://worldcup.sfg.io/matches', {method: 'GET'})
-      .then(resp => resp.json())
-      .then(json => this.setState({matches: json}));
   }
 
 }
