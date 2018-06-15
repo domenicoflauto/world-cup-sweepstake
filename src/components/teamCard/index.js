@@ -1,24 +1,26 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { getFlag } from '../../helpers/flags';
+import { TEAMS } from '../../helpers/teams';
 
 import './teamCard.css';
 
 class TeamCard extends React.Component {
 
   render() {
-    let { team, user, away } = this.props;
+    let { id, away } = this.props;
     let classes = classNames({
       'team-card': true,
       'away': away
     });
 
+    let team = TEAMS[id];
+
     return (
       <div className={ classes }>
-        <div className='user'>({ user })</div>
+        <div className='user'>{ team.user }</div>
         <div className='flag'>
-          <img src={ getFlag(team) } alt={ team } />
+          <img src={ team.flag } alt={ team.name } />
         </div>
       </div>
     );
