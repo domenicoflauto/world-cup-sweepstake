@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from './components/header';
+import Leaderboards from './views/leaderboards';
 
 import './App.css';
 
@@ -16,7 +17,7 @@ class App extends Component {
     // TODO: switch the current view depending on state - add handler to update state to header
     switch(this.state.view) {
     case 'leaderboards':
-      return <div />;
+      return <Leaderboards />;
     case 'teams':
       return <div />;
     }

@@ -4,7 +4,7 @@
   width: 100%;
   color: rgba(255,255,255,1);
   display: grid;
-  grid-template-columns: 192px 1fr 192px;
+  grid-template-columns: 256px 1fr 256px;
   grid-template-rows: 96px;
 }
 
