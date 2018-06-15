@@ -1,2 +1,2 @@
 # world-cup-sweepstake
-the official Eigen World Cup sweepstake board
+the official Eigen World Cup sweepstake boar d
