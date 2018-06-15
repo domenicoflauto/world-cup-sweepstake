@@ -1,0 +1,22 @@
+.Header {
+  background-color: rgba(15,69,131,1);
+  height: 96px;
+  width: 100%;
+  color: rgba(255,255,255,1);
+  display: grid;
+  grid-template-columns: 192px 1fr 192px;
+  grid-template-rows: 96px;
+}
+
+.logo {
+  width: 72px;
+  margin: 12px;
+  margin-right: 24px;
+}
+
+.eigen-logo {
+  width: 72px;
+  margin: 12px auto;
+  padding-left: 12px;
+  border-left: 1px solid rgba(255,255,255,0.5)
+}
