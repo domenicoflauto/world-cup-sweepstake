@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import Header from './components/header';
+import Leaderboards from './views/leaderboards';
+import Teams from './views/teams';
 import * as stats from './helpers/stats';
 
 import './App.css';
@@ -20,12 +22,11 @@ class App extends Component {
   }
 
   renderView() {
-    // TODO: switch the current view depending on state - add handler to update state to header
     switch(this.state.view) {
     case 'leaderboards':
-      return <div />;
+      return <Leaderboards />;
     case 'teams':
-      return <div />;
+      return <Teams />;
     }
   }
 
@@ -33,8 +34,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        { this.renderView() }
-        BIGGEST LOSS - {this.state.matches.length && stats.getBiggestLosses(this.state.matches)[0]}
+        <div className='view'>
+          { this.renderView() }
+        </div>
+        BIGGEST LOSS - {this.state.data.length && this.getBiggestLoss()}
       </div>
     );
   }
