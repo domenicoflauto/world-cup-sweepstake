@@ -2,7 +2,7 @@
   display: grid;
   /* align-items: center;
   justify-content: space-between; */
-  grid-template-columns: 60px 1fr;
+  grid-template-columns: 60px 96px 96px;
   grid-gap: 12px;
   padding: 10px;
   height: 60px;
@@ -13,13 +13,14 @@
   /* flex-direction: row-reverse; */
 }
 
-.team-card .user {
+.team-card .user, .score {
   align-self: center;
 }
 
 .team-card .flag {
   border-radius: 50px;
   width: 60px;
+  align-self: center;
 }
 
 .team-card .flag img {

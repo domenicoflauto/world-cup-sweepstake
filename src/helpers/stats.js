@@ -1,5 +1,7 @@
 import React from 'react';
 
+import DirtiestScore from '../components/dirtiest';
+
 export function getBiggestLosses(matches) {
   const worstGoalDiffs = matches
     .filter(m => m.status === 'completed')
@@ -89,9 +91,10 @@ export function rankDirtiestTeams(matches) {
       a[0],
       (
         <ul className='dirtiest-scores'>
-          <li>{ `red: ${a[1].red}` }</li>
+          {/* <li>{ `red: ${a[1].red}` }</li>
           <li>{ `yellow: ${a[1].yellow}` }</li>
-          <li>{ `score: ${(a[1].red * 2) + a[1].yellow}` }</li>
+          <li>{ `score: ${(a[1].red * 2) + a[1].yellow}` }</li> */}
+          <DirtiestScore score={{yellow: a[1].yellow, red: a[1].red*2}} />
         </ul>
       )
     ];

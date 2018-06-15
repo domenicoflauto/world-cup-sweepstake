@@ -22,7 +22,7 @@ class TeamCard extends React.Component {
           <img src={ team.picture } alt={ team.name } className="clip-circle" />
         </div>
         <div className='user'>{ team.user }</div>
-        <div>
+        <div className="score">
           {score}
         </div>
       </div>
