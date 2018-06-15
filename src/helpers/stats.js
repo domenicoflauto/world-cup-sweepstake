@@ -97,3 +97,22 @@ export function rankDirtiestTeams(matches) {
     ];
   });
 }
+
+export function getFastestGoals(matches) {
+  let goals = [];
+  matches.filter(m => m.status === 'completed').forEach(m => {
+    goals = goals.concat(getGoals(m, 'home'));
+    goals = goals.concat(getGoals(m, 'away'));
+  })
+
+  return goals
+    .sort((a, b) => a[1] - b[1])
+    .map(g => [g[0], g[1]]);
+}
+
+function getGoals(match, side) {
+  return match[`${side}_team_events`]
+    .filter(e => e.type_of_event ==='goal')
+    // TODO change time into an int...
+    .map(g => [match[`${side}_team`].code, g.time]);
+}
