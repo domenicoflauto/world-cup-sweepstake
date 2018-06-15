@@ -3,6 +3,9 @@
 }
 
 .teams-grid {
-  display: flex;
-  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 12px;
 }

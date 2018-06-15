@@ -1,18 +1,20 @@
 .team-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  /* align-items: center;
+  justify-content: space-between; */
+  grid-template-columns: 60px 1fr;
+  grid-gap: 12px;
   padding: 10px;
-  height: 40px;
+  height: 60px;
   width: 200px;
 }
 
 .team-card.away {
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
 }
 
 .team-card .user {
-
+  align-self: center;
 }
 
 .team-card .flag {
@@ -22,4 +24,12 @@
 
 .team-card .flag img {
   max-width: 100%;
+}
+
+.profile-img {
+  clip-path: circle(60px at center);
+}
+
+.clip-circle {
+  clip-path: circle(30px at center);
 }

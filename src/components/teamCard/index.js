@@ -18,10 +18,10 @@ class TeamCard extends React.Component {
 
     return (
       <div className={ classes }>
-        <div className='user'>{ team.user }</div>
         <div className='flag'>
-          <img src={ team.flag } alt={ team.name } />
+          <img src={ team.picture } alt={ team.name } className="clip-circle" />
         </div>
+        <div className='user'>{ team.user }</div>
         <div>
           {score}
         </div>
