@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from './components/header';
-import Leaderboards from './views/leaderboards';
+import * as stats from './helpers/stats';
 
 import './App.css';
 
@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = {
       view: 'leaderboards',
-      data : [],
+      matches : [],
     }
   }
 
@@ -23,7 +23,7 @@ class App extends Component {
     // TODO: switch the current view depending on state - add handler to update state to header
     switch(this.state.view) {
     case 'leaderboards':
-      return <Leaderboards />;
+      return <div />;
     case 'teams':
       return <div />;
     }
@@ -34,7 +34,7 @@ class App extends Component {
       <div className="App">
         <Header />
         { this.renderView() }
-        BIGGEST LOSS - {this.state.data.length && this.getBiggestLoss()}
+        BIGGEST LOSS - {this.state.matches.length && stats.getBiggestLosses(this.state.matches)[0]}
       </div>
     );
   }
@@ -42,14 +42,9 @@ class App extends Component {
   getData() {
     fetch('http://worldcup.sfg.io/matches', {method: 'GET'})
       .then(resp => resp.json())
-      .then(json => this.setState({data: json}));
+      .then(json => this.setState({matches: json}));
   }
 
-  getBiggestLoss() {
-    const matches = this.state.data.filter(m => m.status === 'completed');
-    // TODO handle tie breaks
-    return matches[0].venue;
-  }
 }
 
 export default App;
