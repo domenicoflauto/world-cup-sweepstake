@@ -14,9 +14,12 @@ class LeaderBoard extends React.Component {
         <h3 className='leader-board-name'>{ name }</h3>
         <ol>
           {
-            standings.slice(0, 5).map((id, i) =>
+            standings.slice(0, 5).map((team, i) =>
               <li key={ `${name}-${i}` }>
-                <TeamCard id={ id } />
+                <TeamCard
+                  id={ team[0] }
+                  score={ team[1] }
+                />
               </li>
             )
           }

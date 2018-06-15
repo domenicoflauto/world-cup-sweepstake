@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Header from './components/header';
 import Leaderboards from './views/leaderboards';
+import Teams from './views/teams';
+import * as stats from './helpers/stats';
 
 import './App.css';
 
@@ -11,21 +13,22 @@ class App extends Component {
     super(props);
     this.state = {
       view: 'leaderboards',
-      data : [],
+      matches : [],
     }
   }
 
   componentDidMount() {
-    this.getData();
+    fetch('http://worldcup.sfg.io/matches', {method: 'GET'})
+      .then(resp => resp.json())
+      .then(json => this.setState({matches: json}));
   }
 
   renderView() {
-    // TODO: switch the current view depending on state - add handler to update state to header
     switch(this.state.view) {
     case 'leaderboards':
-      return <Leaderboards />;
+      return <Leaderboards matches={this.state.matches} />;
     case 'teams':
-      return <div />;
+      return <Teams />;
     }
   }
 
@@ -33,23 +36,13 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        { this.renderView() }
-        BIGGEST LOSS - {this.state.data.length && this.getBiggestLoss()}
+        <div className='view'>
+          { this.renderView() }
+        </div>
       </div>
     );
   }
 
-  getData() {
-    fetch('http://worldcup.sfg.io/matches', {method: 'GET'})
-      .then(resp => resp.json())
-      .then(json => this.setState({data: json}));
-  }
-
-  getBiggestLoss() {
-    const matches = this.state.data.filter(m => m.status === 'completed');
-    // TODO handle tie breaks
-    return matches[0].venue;
-  }
 }
 
 export default App;
