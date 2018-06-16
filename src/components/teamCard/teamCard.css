@@ -2,25 +2,73 @@
   display: grid;
   /* align-items: center;
   justify-content: space-between; */
-  grid-template-columns: 60px 96px 96px;
+  grid-template-columns: 12px 60px 96px 96px;
   grid-gap: 12px;
   padding: 10px;
   height: 60px;
-  width: 200px;
+  width: 320px;
+  border-radius: 6px;
+  background-color: rgba(255,255,255,0.75);
 }
+
+.team-card.first {
+  position: relative;
+  overflow: hidden;
+  /* animation: slide 1s infinite; */
+}
+
+.team-card.first:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: url('../../shine.png') no-repeat 0 0;
+  background-size: contain;
+  background-blend-mode: multiply;
+  animation: slide 2s infinite 1s;
+}
+
+@keyframes slide {
+	0% {
+    transform:translateX(-100%);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0.3;
+  }
+
+	50% {
+    transform:translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform:translateX(100%);
+    opacity: 0;
+  }
+}
+
 
 .team-card.away {
   /* flex-direction: row-reverse; */
 }
 
-.team-card .user, .score {
+.team-card .user, .score, .rank {
   align-self: center;
+}
+
+
+.team-card .user .team {
+  font-weight: bold;
 }
 
 .team-card .flag {
   border-radius: 50px;
   width: 60px;
   align-self: center;
+  position: relative;
 }
 
 .team-card .flag img {
@@ -33,4 +81,12 @@
 
 .clip-circle {
   clip-path: circle(30px at center);
+}
+
+.clip-circle-small {
+  height: 24px;
+  position: absolute;
+  bottom: 0;
+  right: -6px;
+  clip-path: circle(12px at center);
 }

@@ -6,6 +6,12 @@
 
 }
 
+.leader-board ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+
 .dirtiest-scores {
   /* font-size: 8px; */
   list-style: none;

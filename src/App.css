@@ -1,8 +1,18 @@
 body {
   font-family: 'Open Sans';
+  background-color: rgba(220,220,220,0.75);
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.nav-item {
+  cursor: pointer;
+  margin: 6px;
+}
+
+.nav-item.active {
+  font-weight: bold;
+}
+
+.view {
+  max-width: 1440px;
+  margin: 0 auto;
 }

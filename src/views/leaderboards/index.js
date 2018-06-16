@@ -11,7 +11,6 @@ class Leaderboards extends React.Component {
   render() {
     return (
       <div className="Leaderboards-view">
-        Leaderboards
         <div className="leaderboards-wrapper">
           <LeaderBoard
             name='Biggest Hammering'
@@ -25,13 +24,6 @@ class Leaderboards extends React.Component {
             name='Fastest goal'
             standings={stats.getFastestGoals(this.props.matches)}
           />
-
-          <Dirtiest />
-          <Dirtiest />
-          <Dirtiest />
-          <Dirtiest />
-          <Dirtiest />
-          <Dirtiest />
         </div>
       </div>
     );

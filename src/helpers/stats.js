@@ -91,9 +91,6 @@ export function rankDirtiestTeams(matches) {
       a[0],
       (
         <ul className='dirtiest-scores'>
-          {/* <li>{ `red: ${a[1].red}` }</li>
-          <li>{ `yellow: ${a[1].yellow}` }</li>
-          <li>{ `score: ${(a[1].red * 2) + a[1].yellow}` }</li> */}
           <DirtiestScore score={{yellow: a[1].yellow, red: a[1].red*2}} />
         </ul>
       )
@@ -110,7 +107,7 @@ export function getFastestGoals(matches) {
 
   return goals
     .sort((a, b) => a[1] - b[1])
-    .map(g => [g[0], g[1]]);
+    .map(g => [g[0], `${g[1]} mins`]);
 }
 
 function getGoals(match, side) {

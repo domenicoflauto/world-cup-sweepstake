@@ -1,9 +1,13 @@
 .Dirtiest-score {
   width: 96px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 22px 22px;
+  grid-row-gap: 3px;
 }
 
 .card-container {
-  display: inline-block;
+  grid-column: 1;
 }
 
 .dcard {
@@ -15,29 +19,14 @@
   position: relative;
 }
 
-/* .dcard-score {
-  width: auto;
-  min-width: 12px;
-  height: auto;
-  border-radius: 20px;
-  background-color: white;
-  font-weight: bolder;
-  text-align: center;
-  position: absolute;
-  bottom: -6px;
-  right: -6px;
-  font-size: 16px;
-  padding: 1px 2px;
-  border: 1px solid #000;
-} */
-
 .dcard-score {
-  font-weight: bolder;
-  font-size: 16px;
+  font-weight: normal;
+  font-size: 14px;
   padding-left: 2px;
   position: relative;
   display: inline-block;
-
+  bottom: 3px;
+  margin-right: 3px;
 }
 
 .yellow {
@@ -50,8 +39,12 @@
 
 .dirtiest-total {
   font-weight: bolder;
-  font-size: 16px;
+  font-size: 21px;
   padding-left: 2px;
   position: relative;
   display: inline-block;
+  bottom: 3px;
+  grid-row: 1 / 3;
+  grid-column: 2;
+  align-self: center;
 }

@@ -14,6 +14,12 @@ class App extends Component {
       view: 'leaderboards',
       matches : [],
     }
+    this.renderTeams = this.changeView.bind(this, 'teams');
+    this.renderLeaderboards = this.changeView.bind(this, 'leaderboards');
+  }
+
+  changeView(view) {
+    this.setState({view: view});
   }
 
   componentDidMount() {
@@ -36,6 +42,16 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className='view'>
+          <span
+            onClick={this.renderLeaderboards}
+            className={`nav-item ${this.state.view==='leaderboards' ? 'active' : ''}`}>
+            Leaderboards
+          </span>
+          <span
+            onClick={this.renderTeams}
+            className={`nav-item ${this.state.view==='teams' ? 'active' : ''}`}>
+            Teams
+          </span>
           { this.renderView() }
         </div>
       </div>

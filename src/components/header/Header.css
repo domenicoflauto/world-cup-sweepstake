@@ -3,6 +3,12 @@
   height: 96px;
   width: 100%;
   color: rgba(255,255,255,1);
+  transition: all 50ms ease-out;
+}
+
+.inner-header {
+  max-width: 1440px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 256px 1fr 256px;
   grid-template-rows: 96px;
@@ -19,4 +25,33 @@
   margin: 12px auto;
   padding-left: 12px;
   border-left: 1px solid rgba(255,255,255,0.5)
+}
+
+.title {
+  display: block;
+  padding: 36px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+/* @media screen and (max-width: 1120px) {
+  .leaderboards-wrapper {
+    grid-template-columns: 340px 340px;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+} */
+
+@media screen and (max-width: 740px) {
+  .Header { height: 48px; }
+  .inner-header {
+    grid-template-columns: 120px 1fr
+  }
+  .logo, .eigen-logo {
+    width: 36px;
+    margin: 6px;
+  }
+  .title {
+    padding: 16px 6px;
+    width: 280px;
+  }
 }
