@@ -8,23 +8,29 @@ export function getBiggestLosses(matches) {
     .map(getLosingGoalDiff)
     .reduce(teamsReducer, {});
 
+  console.log(worstGoalDiffs);
+
   return Object.keys(worstGoalDiffs)
-    .sort((a, b) => worstGoalDiffs[a] < worstGoalDiffs[b])
+    .sort((a, b) => worstGoalDiffs[b].diff - worstGoalDiffs[a].diff)
     .map(code => [code, worstGoalDiffs[code].score]);
 }
 
 function getLosingGoalDiff({ home_team, away_team }) {
   let code = away_team.code;
   let diff = home_team.goals - away_team.goals;
+  let score = `${home_team.goals} - ${away_team.goals}`;
   // if the home team lost
   if (diff < 0) {
     code = home_team.code;
     diff = -diff;
   }
+  else {
+    score = score.split('').reverse().join('');
+  }
   return {
-    code: code,
-    diff: diff,
-    score: `${home_team.goals} - ${away_team.goals}`
+    code,
+    diff,
+    score
   }
 }
 
