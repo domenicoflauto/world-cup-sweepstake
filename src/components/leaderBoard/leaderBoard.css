@@ -3,7 +3,7 @@
 }
 
 .leader-board-name {
-
+  cursor: pointer;
 }
 
 .leader-board ul {
@@ -16,4 +16,12 @@
   /* font-size: 8px; */
   list-style: none;
   padding: 0
+}
+
+.full-leader-board {
+  position: relative;
+  background-color: white;
+  margin: 10px;
+  padding: 0 10px;
+  border-radius: 5px;
 }

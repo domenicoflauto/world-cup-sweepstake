@@ -5,5 +5,27 @@ body {
 }
 
 .view {
+  position: relative;
   padding: 10px;
+}
+
+.modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(240, 240, 240, 0.9);
+  z-index: 100;
+}
+
+.close-button {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.close-button:before {
+  content: 'x'
 }
