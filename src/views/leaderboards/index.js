@@ -3,7 +3,7 @@ import React from 'react';
 import './leaderboards.css';
 import * as stats from '../../helpers/stats';
 
-import Dirtiest from './components/dirtiest';
+import Placeholder from './components/placeholder';
 import LeaderBoard from '../../components/leaderBoard';
 
 class Leaderboards extends React.Component {
@@ -24,6 +24,16 @@ class Leaderboards extends React.Component {
             name='Fastest goal'
             standings={stats.getFastestGoals(this.props.matches)}
           />
+          <Placeholder
+            name='Winner'
+          />
+          <Placeholder
+            name='Shittiest team'
+          />
+          <Placeholder
+            name='Furthest out screamer'
+          />
+
         </div>
       </div>
     );

@@ -1,14 +1,20 @@
 .team-card {
   display: grid;
-  /* align-items: center;
-  justify-content: space-between; */
+  font-size: 14px;
   grid-template-columns: 12px 60px 96px 96px;
   grid-gap: 12px;
-  padding: 10px;
+  padding: 6px 12px;
   height: 60px;
-  width: 320px;
+  width: 316px;
   border-radius: 6px;
   background-color: rgba(255,255,255,0.75);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  transition: all 150ms ease-in;
+}
+
+.team-card:hover {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  transition: all 150ms ease-in;
 }
 
 .team-card.first {
@@ -27,7 +33,7 @@
   background: url('../../shine.png') no-repeat 0 0;
   background-size: contain;
   background-blend-mode: multiply;
-  animation: slide 2s infinite 2s
+  animation: slide 2s infinite 2s;
 }
 
 @keyframes slide {
@@ -66,7 +72,7 @@
 
 .team-card .flag {
   border-radius: 50px;
-  width: 60px;
+  width: 48px;
   align-self: center;
   position: relative;
 }
@@ -80,13 +86,13 @@
 }
 
 .clip-circle {
-  clip-path: circle(30px at center);
+  clip-path: circle(24px at center);
 }
 
 .clip-circle-small {
   height: 24px;
   position: absolute;
   bottom: 0;
-  right: -6px;
+  right: -12px;
   clip-path: circle(12px at center);
 }

@@ -25,7 +25,10 @@ class LeaderBoard extends React.Component {
 
     return (
       <div className='leader-board'>
-        <h3 className='leader-board-name' onClick={ this.toggleFullList }>{ name }</h3>
+        <div className='leader-board-name'>
+          <h3>{ name }</h3>
+        <span className="view-all" onClick={ this.toggleFullList }>View all</span>
+      </div>
         <ul className='leaderboard-ranks'>
           {
             standings.slice(0, 5).map((team, i) =>
