@@ -4,6 +4,8 @@
   width: 100%;
   color: rgba(255,255,255,1);
   transition: all 50ms ease-out;
+  background: url('../../fwc_darkbluebg.png') repeat;
+  background-position: center;
 }
 
 .inner-header {
