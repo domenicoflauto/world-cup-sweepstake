@@ -8,8 +8,6 @@ export function getBiggestLosses(matches) {
     .map(getLosingGoalDiff)
     .reduce(teamsReducer, {});
 
-  console.log(worstGoalDiffs);
-
   return Object.keys(worstGoalDiffs)
     .sort((a, b) => worstGoalDiffs[b].diff - worstGoalDiffs[a].diff)
     .map(code => [code, worstGoalDiffs[code].score]);
