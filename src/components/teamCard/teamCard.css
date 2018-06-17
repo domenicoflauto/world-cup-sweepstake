@@ -19,7 +19,7 @@
 
 .team-card.first:after {
   position: absolute;
-  left: 0;
+  left: -160px;
   top: 0;
   content: '';
   width: 100%;
@@ -27,7 +27,7 @@
   background: url('../../shine.png') no-repeat 0 0;
   background-size: contain;
   background-blend-mode: multiply;
-  animation: slide 2s infinite 1s;
+  animation: slide 2s infinite 2s
 }
 
 @keyframes slide {
@@ -41,11 +41,11 @@
   }
 
 	50% {
-    transform:translateX(100%);
+    transform:translateX(150%);
     opacity: 0;
   }
   100% {
-    transform:translateX(100%);
+    transform:translateX(150%);
     opacity: 0;
   }
 }
