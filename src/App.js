@@ -6,6 +6,8 @@ import Teams from './views/teams';
 
 import './App.css';
 
+import teamsIcon from './teams.svg';
+import ranksIcon from './ranks.svg';
 
 class App extends Component {
   constructor(props) {
@@ -49,16 +51,21 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className='view'>
-          <span
-            onClick={this.renderLeaderboards}
-            className={`nav-item ${this.state.view==='leaderboards' ? 'active' : ''}`}>
-            Leaderboards
-          </span>
-          <span
-            onClick={this.renderTeams}
-            className={`nav-item ${this.state.view==='teams' ? 'active' : ''}`}>
-            Teams
-          </span>
+          <div className="nav-menu">
+            <span className="view-title"> {this.state.view} </span>
+            <span className="nav-controllers">
+              <span
+                onClick={this.renderLeaderboards}
+                className={`nav-item ${this.state.view==='leaderboards' ? 'active' : ''}`}>
+                <img src={ranksIcon} alt="leaderboards" title="leaderboards"/>
+              </span>
+              <span
+                onClick={this.renderTeams}
+                className={`nav-item ${this.state.view==='teams' ? 'active' : ''}`}>
+                <img src={teamsIcon} alt="Teams" title="Teams"/>
+              </span>
+            </span>
+          </div>
           { this.renderView() }
         </div>
       </div>

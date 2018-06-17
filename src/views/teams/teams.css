@@ -1,11 +1,28 @@
 .teams-view {
-
+  margin-top: 16px;
 }
 
 .teams-grid {
-  width: 90%;
-  margin: 0 5%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 340px 340px 340px 340px;
   grid-gap: 12px;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1440px) {
+  .teams-grid {
+    grid-template-columns: 340px 340px 340px;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .teams-grid {
+    grid-template-columns: 340px 340px;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .teams-grid {
+    grid-template-columns: 340px;
+  }
 }

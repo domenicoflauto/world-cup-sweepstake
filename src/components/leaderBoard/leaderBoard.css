@@ -1,14 +1,38 @@
 .leader-board {
-  padding: 10px;
+  /* padding: 10px; */
 }
 
 .leader-board-name {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+
+.leader-board-name h3 {
+  font-size: 16px;
+  display: inline-block;
+  margin: 0;
+}
+
+.leader-board-name.placeholder h3 {
+  color: rgba(0,0,0,0.25);
+}
+
+.leader-board-name.placeholder .view-all {
+  cursor: default;
+}
+
+.view-all {
   cursor: pointer;
+  font-style: italic;
+  font-size: 12px;
+  text-align: right;
 }
 
 .leader-board ul {
   list-style: none;
   padding-left: 0;
+  margin: 0;
 }
 
 
@@ -20,8 +44,19 @@
 
 .full-leader-board {
   position: relative;
-  background-color: white;
+  background-color: rgba(235,235,235,1);
   margin: 10px;
   padding: 0 10px;
   border-radius: 5px;
+  animation: expand .5s ease-out forwards;
+  transform-origin: top;
+}
+
+@keyframes expand {
+  0% {
+    transform: scaleY(0.8);
+    opacity: 0;
+  }
+  50% { transform: scaleY(1); }
+  100% { opacity: 1; }
 }
