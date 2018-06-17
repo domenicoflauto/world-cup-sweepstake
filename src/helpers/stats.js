@@ -116,8 +116,8 @@ export function getFastestGoals(matches) {
 
 function getGoals(match, side) {
   return match[`${side}_team_events`]
-    .filter(e => e.type_of_event ==='goal')
-    // TODO change time into an int...
+    // TODO handle type = goal-own, do we want to include them?
+    .filter(e => (e.type_of_event ==='goal' || e.type_of_event === 'goal-penalty'))
     .map(g => [match[`${side}_team`].code, convertToMins(g.time)]);
 }
 
