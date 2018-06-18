@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   getData() {
-    fetch('http://worldcup.sfg.io/matches', {method: 'GET'})
+    fetch('http://worldcup.sfg.io/matches?details=true', {method: 'GET'})
       .then(resp => resp.json())
       .then(json => this.setState({matches: json}));
   }
