@@ -14,7 +14,8 @@ class App extends Component {
     super(props);
     this.state = {
       view: 'leaderboards',
-      matches : [],
+      matches: [],
+      results: []
     }
     this.renderTeams = this.changeView.bind(this, 'teams');
     this.renderLeaderboards = this.changeView.bind(this, 'leaderboards');
@@ -35,12 +36,16 @@ class App extends Component {
     fetch('http://worldcup.sfg.io/matches?details=true', {method: 'GET'})
       .then(resp => resp.json())
       .then(json => this.setState({matches: json}));
+
+    fetch('http://worldcup.sfg.io/teams/results', {method: 'GET'})
+      .then(resp => resp.json())
+      .then(json => this.setState({results: json}));
   }
 
   renderView() {
     switch(this.state.view) {
     case 'leaderboards':
-      return <Leaderboards matches={this.state.matches} />;
+      return <Leaderboards matches={this.state.matches} results={this.state.results}/>;
     case 'teams':
       return <Teams />;
     }

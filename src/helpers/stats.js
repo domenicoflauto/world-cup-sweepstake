@@ -127,3 +127,25 @@ const convertToMins = (goalTimeString) => {
     .filter(t => t !== "");
   return mins.reduce((a, b) => parseInt(a) + parseInt(b), 0);
 }
+
+export function getWorstTeams(results) {
+  return results.sort((a, b) => {
+    if (a.losses === b.losses) {
+      if (a.goal_differential === b.goal_differential) {
+        return a.goals_for - b.goals_for;
+      }
+      return a.goal_differential - b.goal_differential;
+    }
+    return b.losses - a.losses;
+  })
+    .map(team => {
+    return [
+      team.fifa_code,
+      <ul className='worst-team-scores'>
+        <li>{ `lost: ${team.losses}` }</li>
+        <li>{ `gd: ${team.goal_differential}` }</li>
+        <li>{ `scored: ${team.goals_for}` }</li>
+      </ul>
+    ];
+  });
+}

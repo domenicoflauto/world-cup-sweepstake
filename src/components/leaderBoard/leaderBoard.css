@@ -60,3 +60,7 @@
   50% { transform: scaleY(1); }
   100% { opacity: 1; }
 }
+
+.worst-team-scores li {
+  text-align: right;
+}
