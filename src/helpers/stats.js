@@ -1,6 +1,7 @@
 import React from 'react';
 
 import DirtiestScore from '../components/dirtiest';
+import WorstScore from '../components/worst';
 
 export function getBiggestLosses(matches) {
   const worstGoalDiffs = matches
@@ -141,11 +142,10 @@ export function getWorstTeams(results) {
     .map(team => {
     return [
       team.fifa_code,
-      <ul className='worst-team-scores'>
-        <li>{ `lost: ${team.losses}` }</li>
-        <li>{ `gd: ${team.goal_differential}` }</li>
-        <li>{ `scored: ${team.goals_for}` }</li>
-      </ul>
+      <WorstScore lost={team.losses}
+        gd={team.goal_differential}
+        scored={team.goals_for}
+      />
     ];
   });
 }
