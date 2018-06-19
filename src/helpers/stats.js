@@ -33,7 +33,7 @@ function getLosingGoalDiff({ home_team, away_team }) {
 }
 
 function teamsReducer(col, team) {
-  if ((!(team.code in col)) || (col[team.code] < team.diff)) {
+  if ((!(team.code in col)) || (col[team.code].diff < team.diff)) {
     col[team.code] = {diff: team.diff, score: team.score};
   }
   return col;
