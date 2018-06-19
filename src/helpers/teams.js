@@ -26,7 +26,7 @@ export const TEAMS = {
   },
   'ESP': {
     flag: 'https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/es.svg',
-    user: 'Nick',
+    user: 'Lil Nicky',
     picture: '128_nick.jpg'
   },
   'MAR': {
@@ -116,8 +116,8 @@ export const TEAMS = {
   },
   'BEL': {
     flag: 'https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/be.svg',
-    user: '(not taken)',
-    picture: 'user-placeholder.png'
+    user: 'Grego',
+    picture: '128_grego.jpg'
   },
   'PAN': {
     flag: 'https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/pa.svg',
