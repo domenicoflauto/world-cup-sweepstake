@@ -1,8 +1,8 @@
 export const TEAMS = {
   'RUS': {
     flag: 'https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/ru.svg',
-    user: '(not taken)',
-    picture: 'user-placeholder.png'
+    user: 'Sinan',
+    picture: '128_sinan.jpg'
   },
   'KSA': {
     flag: 'https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/sa.svg',
