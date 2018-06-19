@@ -24,11 +24,12 @@ class Leaderboards extends React.Component {
             name='Fastest goal'
             standings={stats.getFastestGoals(this.props.matches)}
           />
-          <Placeholder
-            name='Winner'
+          <LeaderBoard
+            name='Shittiest team'
+            standings={stats.getWorstTeams(this.props.results)}
           />
           <Placeholder
-            name='Shittiest team'
+            name='Winner'
           />
           <Placeholder
             name='Furthest out screamer'
