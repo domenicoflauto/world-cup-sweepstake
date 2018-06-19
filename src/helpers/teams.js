@@ -141,7 +141,7 @@ export const TEAMS = {
   },
   'COL': {
     flag: 'https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/co.svg',
-    user: 'Uwaiw',
+    user: 'Uwais',
     picture: '128_uwais.jpg'
   },
   'SEN': {

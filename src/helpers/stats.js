@@ -4,8 +4,7 @@ import DirtiestScore from '../components/dirtiest';
 import WorstScore from '../components/worst';
 
 export function getBiggestLosses(matches) {
-  const worstGoalDiffs = matches
-    .filter(m => m.status === 'completed')
+  const worstGoalDiffs = startedMatches(matches)
     .map(getLosingGoalDiff)
     .reduce(teamsReducer, {});
 
@@ -96,7 +95,7 @@ export function rankDirtiestTeams(matches) {
       a[0],
       (
         <ul className='dirtiest-scores'>
-          <DirtiestScore score={{yellow: a[1].yellow, red: a[1].red*2}} />
+          <DirtiestScore score={{yellow: a[1].yellow, red: a[1].red}} />
         </ul>
       )
     ];
@@ -105,7 +104,7 @@ export function rankDirtiestTeams(matches) {
 
 export function getFastestGoals(matches) {
   let goals = [];
-  matches.filter(m => m.status === 'completed').forEach(m => {
+  startedMatches(matches).forEach(m => {
     goals = goals.concat(getGoals(m, 'home'));
     goals = goals.concat(getGoals(m, 'away'));
   })
