@@ -1,6 +1,7 @@
 import React from 'react';
 
 import DirtiestScore from '../components/dirtiest';
+import WorstScore from '../components/worst';
 
 export function getBiggestLosses(matches) {
   const worstGoalDiffs = matches
@@ -126,4 +127,25 @@ const convertToMins = (goalTimeString) => {
     .map(t => t.replace('+', ''))
     .filter(t => t !== "");
   return mins.reduce((a, b) => parseInt(a) + parseInt(b), 0);
+}
+
+export function getWorstTeams(results) {
+  return results.sort((a, b) => {
+    if (a.losses === b.losses) {
+      if (a.goal_differential === b.goal_differential) {
+        return a.goals_for - b.goals_for;
+      }
+      return a.goal_differential - b.goal_differential;
+    }
+    return b.losses - a.losses;
+  })
+    .map(team => {
+    return [
+      team.fifa_code,
+      <WorstScore lost={team.losses}
+        gd={team.goal_differential}
+        scored={team.goals_for}
+      />
+    ];
+  });
 }

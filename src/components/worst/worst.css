@@ -1,0 +1,8 @@
+.worst-team-scores li {
+  text-align: right;
+}
+
+.worst-team-scores li span {
+  font-weight: bold;
+  margin-left: 5px;
+}
