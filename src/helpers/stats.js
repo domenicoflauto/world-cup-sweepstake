@@ -43,63 +43,47 @@ function startedMatches(matches) {
   return matches.filter(match => match.time !== null);
 }
 
+function getCards(match, side) {
+  let teamCode = match[`${side}_team`].code;
+  let yellow = match[`${side}_team_events`].filter(e => e.type_of_event === 'yellow-card').length;
+  let red = match[`${side}_team_events`].filter(e => e.type_of_event === 'red-card').length;
+
+  return {
+    teamCode,
+    yellow,
+    red
+  };
+}
+
 export function rankDirtiestTeams(matches) {
   const cardData = startedMatches(matches).reduce((col, match) => {
-    let teams = [{
-      id: match.home_team.code ,
-      yellow: match.home_team_events.filter(e => e.type_of_event === 'yellow-card').length,
-      red: match.home_team_events.filter(e => e.type_of_event === 'red-card').length
-    },
-    {
-      id: match.away_team.code,
-      yellow: match.away_team_events.filter(e => e.type_of_event === 'yellow-card').length,
-      red: match.away_team_events.filter(e => e.type_of_event === 'red-card').length
-    }];
-
-    teams.forEach(team => {
-      let existingTeam = col.find(t => t[0] === team.id);
-      if (existingTeam) {
-        let { yellow, red, score } = existingTeam;
-        col = [
-          ...col.filter(t => t.id !== team.id),
-          [
-            team.id,
-            {
-              yellow: yellow + team.yellow,
-              red: red + team.red,
-              score: score + (team.red * 2) + team.yellow
-            }
-          ]
-        ]
+    ['home', 'away'].forEach(side => {
+      let cards = getCards(match, side);
+      if (cards.teamCode in col) {
+        cards.red += col[cards.teamCode].red;
+        cards.yellow += col[cards.teamCode].yellow;
       }
-      else {
-        col = [
-          ...col,
-          [
-            team.id,
-            {
-              yellow: team.yellow,
-              red: team.red,
-              score: (team.red * 2) + team.yellow
-            }
-          ]
-        ]
+      col[cards.teamCode] = {
+        red: cards.red,
+        yellow: cards.yellow,
+        score: (cards.red * 2) + cards.yellow
       }
     });
     return col;
-  }, []);
+  }, {});
 
-  let sorted = cardData.sort((a, b) => b[1].score - a[1].score);
-  return sorted.map(a => {
-    return [
-      a[0],
-      (
+  let sortedList = Object.keys(cardData)
+    .sort((a, b) => cardData[b].score - cardData[a].score)
+    .map(teamCode => {
+      let team = cardData[teamCode];
+      return [
+        teamCode,
         <ul className='dirtiest-scores'>
-          <DirtiestScore score={{yellow: a[1].yellow, red: a[1].red}} />
+          <DirtiestScore score={{yellow: team.yellow, red: team.red}} />
         </ul>
-      )
-    ];
-  });
+      ];
+    });
+  return sortedList;
 }
 
 export function getFastestGoals(matches) {
